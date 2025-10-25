@@ -13,38 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Set up Java 11
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
 
-      # Download and extract Apache JMeter
       - name: Download Apache JMeter
         run: |
           wget https://downloads.apache.org/jmeter/binaries/apache-jmeter-5.6.3.tgz
           tar -xzf apache-jmeter-5.6.3.tgz
           echo "$PWD/apache-jmeter-5.6.3/bin" >> $GITHUB_PATH
 
-
-
-      # Ensure reports directory exists
       - name: Create Reports Directory
         run: mkdir -p reports
 
-      # Run the JMeter test
       - name: Run JMeter Test
         run: |
           jmeter -n -t tests/Login_Demo.jmx -l reports/results.jtl -j reports/jmeter.log
 
-      # Generate HTML report
       - name: Generate HTML Report
         run: |
           jmeter -g reports/results.jtl -o reports/html
 
-      # U
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-html-report
+          path: reports/html
