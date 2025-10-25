@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jmeter-html-report
-          path: reports/html1 
+          path: reports/html
 
 
       - name: Commit Login_Demo JMeter HTML Report
