@@ -54,7 +54,7 @@ jobs:
           path: reports/html 
 
 
-      - name: Commit JMeter HTML Report
+      - name: Commit Login_Demo JMeter HTML Report
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
