@@ -48,7 +48,7 @@ jobs:
           jmeter -g reports/results.jtl -o reports/html
 
       - name: Upload HTML Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jmeter-html-report
           path: reports/html
