@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jmeter-html-report
-          path: reports/html
+          path: reports/html 
